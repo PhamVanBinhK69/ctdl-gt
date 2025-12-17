@@ -61,7 +61,7 @@ int demSoGPAHon32(Node* controFirst) {
     }
     return dem;
 }
-
+                                                                  
 void sapxepChen(Node*& controFirst, SinhVien sv) {
     Node* nutMoi = taoNode(sv);
 
