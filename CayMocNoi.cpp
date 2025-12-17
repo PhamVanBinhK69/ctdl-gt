@@ -1,8 +1,10 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 struct Node {
-    int duLieu;
+    string duLieu;
     Node* Trai;
     Node* Phai;
 };
@@ -15,7 +17,7 @@ bool cayRong(Node* goc) {
     return goc == NULL;
 }
 
-Node* taoNode(int giaTri) {
+Node* taoNode(string giaTri) {
     Node* nutMoi = new Node;
     nutMoi->duLieu = giaTri;
     nutMoi->Trai = NULL;
@@ -23,11 +25,11 @@ Node* taoNode(int giaTri) {
     return nutMoi;
 }
 
-void themTrai(Node* nutCha, int giaTri) {
+void themTrai(Node* nutCha, string giaTri) {
     nutCha->Trai = taoNode(giaTri);
 }
 
-void themPhai(Node* nutCha, int giaTri) {
+void themPhai(Node* nutCha, string giaTri) {
     nutCha->Phai = taoNode(giaTri);
 }
 
@@ -53,12 +55,15 @@ void duyetSau(Node* goc) {
 }
 
 int main() {
-    Node* goc = taoNode(1);
+    Node* goc = taoNode("A");
 
-    themTrai(goc, 2);
-    themPhai(goc, 3);
-    themTrai(goc->Trai, 4);
-    themPhai(goc->Trai, 5);
+    themTrai(goc, "A.1");
+    themPhai(goc, "A.2");
+    themTrai(goc->Trai, "A.1.1");
+    themPhai(goc->Trai, "A.1.2");
+    themTrai(goc->Phai, "A.2.1");
+    themPhai(goc->Phai, "A.2.2");
+
 
     cout << "Duyet truoc: ";
     duyetTruoc(goc);

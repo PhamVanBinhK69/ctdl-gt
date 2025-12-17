@@ -1,10 +1,12 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 #define MAX 100
 
 struct CayTuanTu {
-    int duLieu[MAX];
+    string duLieu[MAX];
     int kichThuoc;
 };
 
@@ -16,19 +18,19 @@ bool ktraRong(CayTuanTu cay) {
     return cay.kichThuoc == 0;
 }
 
-void themGoc(CayTuanTu &cay, int giaTri) {
+void themGoc(CayTuanTu &cay, string giaTri) {
     cay.duLieu[1] = giaTri;
     cay.kichThuoc = 1;
 }
 
-void themTrai(CayTuanTu &cay, int viTriCha, int giaTri) {
+void themTrai(CayTuanTu &cay, int viTriCha, string giaTri) {
     int viTriTrai = 2 * viTriCha;
     cay.duLieu[viTriTrai] = giaTri;
     if (viTriTrai > cay.kichThuoc)
         cay.kichThuoc = viTriTrai;
 }
 
-void themPhai(CayTuanTu &cay, int viTriCha, int giaTri) {
+void themPhai(CayTuanTu &cay, int viTriCha, string giaTri) {
     int viTriPhai = 2 * viTriCha + 1;
     cay.duLieu[viTriPhai] = giaTri;
     if (viTriPhai > cay.kichThuoc)
@@ -60,11 +62,13 @@ int main() {
     CayTuanTu cay;
     khoiTaoCay(cay);
 
-    themGoc(cay, 1);
-    themTrai(cay, 1, 2);
-    themPhai(cay, 1, 3);
-    themTrai(cay, 2, 4);
-    themPhai(cay, 2, 5);
+    themGoc(cay, "A");
+    themTrai(cay, 1, "A.1");
+    themPhai(cay, 1, "A.2");
+    themTrai(cay, 2, "A.1.1");
+    themPhai(cay, 2, "A.1.2");
+    themTrai(cay, 3, "A.2.1");
+    themPhai(cay, 3, "A.2.2");
 
     cout << "Duyet truoc: ";
     duyetTruoc(cay, 1);
